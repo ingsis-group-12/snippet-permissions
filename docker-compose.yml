@@ -2,7 +2,7 @@ services:
   api:
     container_name: "permissions-api"
     build:
-      context: ${PERMISSIONS_PROJECT_PATH}
+      context: .
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
