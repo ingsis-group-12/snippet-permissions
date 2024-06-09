@@ -1,4 +1,18 @@
 services:
+  database:
+    container_name: "permissions-db"
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
   api:
     container_name: "permissions-api"
     build:
@@ -8,3 +22,6 @@ services:
       - "8083:8083"
     expose:
       - 8083
+
+volumes:
+  db-data:
