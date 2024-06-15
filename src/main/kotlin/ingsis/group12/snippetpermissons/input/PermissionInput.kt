@@ -6,5 +6,5 @@ import jakarta.validation.constraints.NotNull
 // This properties must be nullables in order to make the validator works, in case they are null it will send http 400 error
 data class PermissionInput(
     @field:NotNull(message = "property 'permissions' cannot be null.")
-    val permissions: PermissionType?,
+    val permission: PermissionType?,
 )

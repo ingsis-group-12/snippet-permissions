@@ -32,7 +32,7 @@ class PermissionController(
         @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
-        val newPermission = permissionService.createPermission(userId, snippetId, permissions.permissions!!)
+        val newPermission = permissionService.createPermission(userId, snippetId, permissions.permission!!)
         return ResponseEntity.ok(newPermission)
     }
 
@@ -55,7 +55,7 @@ class PermissionController(
         @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
-        val updatedPermission = permissionService.updatePermissions(userId, snippetId, permissions.permissions!!)
+        val updatedPermission = permissionService.updatePermissions(userId, snippetId, permissions.permission!!)
         return ResponseEntity.ok(updatedPermission)
     }
 }
