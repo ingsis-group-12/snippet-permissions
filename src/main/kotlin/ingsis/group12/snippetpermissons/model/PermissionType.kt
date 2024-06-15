@@ -6,10 +6,8 @@ import ingsis.group12.snippetpermissons.exception.InvalidPermissionException
 
 enum class PermissionType(val value: String) {
     READ("read"),
-    WRITE("write"),
     READ_WRITE("read:write"),
-    CHANGE_RULES("change:rules"),
-    ;
+    OWNER("owner");
 
     @JsonValue
     fun toValue(): String {

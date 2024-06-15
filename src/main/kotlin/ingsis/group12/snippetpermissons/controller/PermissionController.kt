@@ -29,7 +29,7 @@ class PermissionController(
     @ApiResponse(responseCode = "201", description = "Successfully created permissions for snipet")
     fun createPermission(
         @PathVariable("snippetId") snippetId: UUID,
-        @PathVariable("userId") userId: UUID,
+        @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
         val newPermission = permissionService.createPermission(userId, snippetId, permissions.permissions!!)
@@ -41,7 +41,7 @@ class PermissionController(
     @ApiResponse(responseCode = "200", description = "Successfully retrieved user permission for snippet")
     fun getPermissionsBySnippetId(
         @PathVariable("snippetId") snippetId: UUID,
-        @PathVariable("userId") userId: UUID,
+        @PathVariable("userId") userId: String,
     ): ResponseEntity<Permission> {
         val permissionFound = permissionService.getPermissionsBySnippetId(snippetId, userId)
         return ResponseEntity.ok(permissionFound)
@@ -52,7 +52,7 @@ class PermissionController(
     @ApiResponse(responseCode = "200", description = "Successfully updated permissions")
     fun updatePermission(
         @PathVariable("snippetId") snippetId: UUID,
-        @PathVariable("userId") userId: UUID,
+        @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
         val updatedPermission = permissionService.updatePermissions(userId, snippetId, permissions.permissions!!)

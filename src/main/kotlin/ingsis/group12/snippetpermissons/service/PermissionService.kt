@@ -6,18 +6,18 @@ import java.util.UUID
 
 interface PermissionService {
     fun createPermission(
-        userId: UUID,
+        userId: String,
         snippetId: UUID,
         permission: PermissionType,
     ): Permission
 
     fun getPermissionsBySnippetId(
         snippetId: UUID,
-        userId: UUID,
+        userId: String,
     ): Permission
 
     fun updatePermissions(
-        userId: UUID,
+        userId: String,
         snippetId: UUID,
         permission: PermissionType,
     ): Permission

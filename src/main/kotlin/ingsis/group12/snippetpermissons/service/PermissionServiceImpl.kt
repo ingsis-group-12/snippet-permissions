@@ -14,7 +14,7 @@ class PermissionServiceImpl(
     @Autowired private val permissionRepository: PermissionRepository,
 ) : PermissionService {
     override fun createPermission(
-        userId: UUID,
+        userId: String,
         snippetId: UUID,
         permission: PermissionType,
     ): Permission {
@@ -28,13 +28,13 @@ class PermissionServiceImpl(
 
     override fun getPermissionsBySnippetId(
         snippetId: UUID,
-        userId: UUID,
+        userId: String,
     ): Permission {
         return permissionRepository.findByUserIdAndSnippetId(userId, snippetId) ?: throw PermissionNotFoundException()
     }
 
     override fun updatePermissions(
-        userId: UUID,
+        userId: String,
         snippetId: UUID,
         permission: PermissionType,
     ): Permission {

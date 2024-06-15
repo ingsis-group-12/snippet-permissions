@@ -10,7 +10,7 @@ import java.util.UUID
 
 interface PermissionRepository : JpaRepository<Permission, UUID> {
     fun findByUserIdAndSnippetId(
-        userId: UUID,
+        userId: String,
         snippetId: UUID,
     ): Permission?
 

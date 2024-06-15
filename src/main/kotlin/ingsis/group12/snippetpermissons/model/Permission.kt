@@ -14,7 +14,7 @@ import java.util.UUID
 @Table(name = "permission")
 data class Permission(
     @Column(name = "userId", nullable = false)
-    val userId: UUID? = null,
+    val userId: String? = null,
     @Column(name = "snippetId", nullable = false)
     val snippetId: UUID? = null,
     @Enumerated(EnumType.STRING)
