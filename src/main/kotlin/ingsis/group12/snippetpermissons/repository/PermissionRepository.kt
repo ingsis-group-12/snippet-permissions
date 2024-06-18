@@ -21,4 +21,6 @@ interface PermissionRepository : JpaRepository<Permission, UUID> {
         id: UUID,
         permission: PermissionType,
     ): Permission
+
+    fun findAllBySnippetId(snippetId: UUID): List<Permission>
 }

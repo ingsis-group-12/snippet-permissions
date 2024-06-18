@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -57,5 +58,15 @@ class PermissionController(
     ): ResponseEntity<Permission> {
         val updatedPermission = permissionService.updatePermissions(userId, snippetId, permissions.permission!!)
         return ResponseEntity.ok(updatedPermission)
+    }
+
+    @DeleteMapping("/{snippetId}")
+    @Operation(summary = "Delete all permissions for specific snippet")
+    @ApiResponse(responseCode = "204", description = "Successfully deleted all permissions")
+    fun deletePermissionsBySnippetId(
+        @PathVariable("snippetId") snippetId: UUID,
+    ): ResponseEntity<Unit> {
+        permissionService.deletePermissionsBySnippetId(snippetId)
+        return ResponseEntity.noContent().build()
     }
 }

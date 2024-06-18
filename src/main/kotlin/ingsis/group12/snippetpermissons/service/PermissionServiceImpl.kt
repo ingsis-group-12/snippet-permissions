@@ -41,4 +41,9 @@ class PermissionServiceImpl(
         val existingPermission = permissionRepository.findByUserIdAndSnippetId(userId, snippetId) ?: throw PermissionNotFoundException()
         return permissionRepository.updateById(existingPermission.id, permission)
     }
+
+    override fun deletePermissionsBySnippetId(snippetId: UUID) {
+        val existingPermissions = permissionRepository.findAllBySnippetId(snippetId)
+        permissionRepository.deleteAll(existingPermissions)
+    }
 }
