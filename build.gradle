@@ -50,9 +50,9 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-//tasks.check {
-//	dependsOn ktlintCheck
-//}
+tasks.check {
+	dependsOn ktlintCheck
+}
 
 tasks.register('setupHooks') {
 	doLast {
