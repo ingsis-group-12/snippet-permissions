@@ -22,7 +22,5 @@ interface PermissionService {
         permission: PermissionType,
     ): Permission
 
-    fun deletePermissionsBySnippetId(
-        snippetId: UUID,
-    )
+    fun deletePermissionsBySnippetId(snippetId: UUID)
 }
