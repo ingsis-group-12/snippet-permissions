@@ -1,6 +1,6 @@
 services:
   database:
-    container_name: "permissions-db"
+    container_name: "permissions-db-dev"
     image: postgres:alpine
     ports:
       - '5432:5432'

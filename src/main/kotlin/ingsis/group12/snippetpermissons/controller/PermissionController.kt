@@ -69,4 +69,14 @@ class PermissionController(
         permissionService.deletePermissionsBySnippetId(snippetId)
         return ResponseEntity.noContent().build()
     }
+
+    @GetMapping("/user/{userId}")
+    @Operation(summary = "Get all permissions for specific user")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved all permissions for user")
+    fun getPermissionsByUserId(
+        @PathVariable("userId") userId: String,
+    ): ResponseEntity<List<Permission>> {
+        val permissionsFound = permissionService.getPermissionsByUserId(userId)
+        return ResponseEntity.ok(permissionsFound)
+    }
 }

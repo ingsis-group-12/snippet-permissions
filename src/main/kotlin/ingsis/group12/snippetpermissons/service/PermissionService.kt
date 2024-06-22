@@ -16,6 +16,8 @@ interface PermissionService {
         userId: String,
     ): Permission
 
+    fun getPermissionsByUserId(userId: String): List<Permission>
+
     fun updatePermissions(
         userId: String,
         snippetId: UUID,

@@ -33,6 +33,10 @@ class PermissionServiceImpl(
         return permissionRepository.findByUserIdAndSnippetId(userId, snippetId) ?: throw PermissionNotFoundException()
     }
 
+    override fun getPermissionsByUserId(userId: String): List<Permission> {
+        return permissionRepository.findAllByUserId(userId)
+    }
+
     override fun updatePermissions(
         userId: String,
         snippetId: UUID,
