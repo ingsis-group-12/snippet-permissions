@@ -7,4 +7,5 @@ import jakarta.validation.constraints.NotNull
 data class PermissionInput(
     @field:NotNull(message = "property 'permissions' cannot be null.")
     val permission: PermissionType?,
+    val userName: String? = null,
 )
