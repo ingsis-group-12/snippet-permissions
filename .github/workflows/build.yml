@@ -3,8 +3,6 @@ name: Searcher Runner Build
 on:
   pull_request:
     branches: [ "main" , "dev" ]
-  push:
-    branches: [ "main" , "dev" ]
 
 jobs:
   build:
@@ -21,3 +19,6 @@ jobs:
         uses: gradle/gradle-build-action@v3
       - name: Build with Gradle
         run: ./gradlew clean build
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
