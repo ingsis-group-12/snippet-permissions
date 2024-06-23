@@ -2,6 +2,7 @@ package ingsis.group12.snippetpermissons.controller
 
 import ingsis.group12.snippetpermissons.input.PermissionInput
 import ingsis.group12.snippetpermissons.model.Permission
+import ingsis.group12.snippetpermissons.model.UserWithoutPermission
 import ingsis.group12.snippetpermissons.service.PermissionService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
@@ -33,8 +34,11 @@ class PermissionController(
         @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
-        val newPermission = permissionService.createPermission(userId, snippetId, permissions.permission!!)
-        return ResponseEntity.ok(newPermission)
+        println(userId)
+        println(snippetId)
+        println(permissions)
+        val newPermission = permissionService.createPermission(userId, snippetId, permissions)
+        return ResponseEntity.ok().body(newPermission)
     }
 
     @GetMapping("/{snippetId}/user/{userId}")
@@ -78,5 +82,16 @@ class PermissionController(
     ): ResponseEntity<List<Permission>> {
         val permissionsFound = permissionService.getPermissionsByUserId(userId)
         return ResponseEntity.ok(permissionsFound)
+    }
+
+    @GetMapping("/snippet/{snippetId}/user/{userId}")
+    @Operation(summary = "Get all users who do not have permission for specific snippet")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved all users who do not have permission for snippet")
+    fun getUsersWhoNotHavePermissionWithAsset(
+        @PathVariable("snippetId") snippetId: UUID,
+        @PathVariable("userId") userId: String,
+    ): ResponseEntity<List<UserWithoutPermission>> {
+        val usersFound = permissionService.getUsersWhoNotHavePermissionWithAsset(snippetId, userId)
+        return ResponseEntity.ok(usersFound)
     }
 }
