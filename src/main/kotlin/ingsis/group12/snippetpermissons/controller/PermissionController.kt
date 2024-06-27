@@ -34,9 +34,6 @@ class PermissionController(
         @PathVariable("userId") userId: String,
         @Valid @RequestBody permissions: PermissionInput,
     ): ResponseEntity<Permission> {
-        println(userId)
-        println(snippetId)
-        println(permissions)
         val newPermission = permissionService.createPermission(userId, snippetId, permissions)
         return ResponseEntity.ok().body(newPermission)
     }
