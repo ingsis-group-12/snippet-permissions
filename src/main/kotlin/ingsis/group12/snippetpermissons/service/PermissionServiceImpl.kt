@@ -17,6 +17,7 @@ class PermissionServiceImpl(
     @Autowired private val permissionRepository: PermissionRepository,
 ) : PermissionService {
     private val logger = LoggerFactory.getLogger(PermissionServiceImpl::class.java)
+
     override fun createPermission(
         userId: String,
         snippetId: UUID,
