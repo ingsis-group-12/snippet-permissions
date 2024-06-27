@@ -50,7 +50,6 @@ tasks.withType(KotlinCompile) {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
 tasks.check {
 	dependsOn ktlintCheck
 }
@@ -81,3 +80,21 @@ tasks.register('checkGitHooksPath') {
 }
 
 build.dependsOn checkGitHooksPath
+
+
+
+
+
+
+
+
+koverReport {
+	filters {
+		excludes {
+			classes("ingsis.group12.snippetpermissons.relic.CorrelationIdFilter",
+					"ingsis.group12.snippetpermissons.relic.RequestLogFilter",
+					"ingsis.group12.snippetpermissons.exception.ExceptionControllerAdvice",
+			)
+		}
+	}
+}
